@@ -1,7 +1,4 @@
 ﻿app.service('commonservice', function () {
-    this.myFunc = function (x) {
-        return x.toString(16);
-    }
     this.checkitems = function contains(list, obj) {
         for (var i = 0; i < list.length; i++) {
             if (list[i].$$hashKey)
