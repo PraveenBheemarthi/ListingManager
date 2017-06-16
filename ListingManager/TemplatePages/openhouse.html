@@ -1,25 +1,36 @@
-﻿<h1>Open House</h1>
-<div ng-controller="openhouseCtrl">
+﻿<h3>OPEN HOUSE LIST</h3>
 
+<div ng-controller="openhouseCtrl" ng-init="onOpenHouseInIt()">
     <table class="table table-bordered table-hover">
         <!--ng-init="OnOpenHouseInIt()"-->
         <thead></thead>
         <tbody>
             <tr>
+                <th>#</th>
                 <th>
                     Begin Date
                 </th>
                 <th>
                     End Date
                 </th>
+                <th>Listing Name</th>
                 <th></th>
             </tr>
             <tr ng-repeat="openhouse in openHouseList">
                 <td>
-                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem">
+                    {{$index+1}}
+                </td>
+                <td>
+                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseBeginDate" ng-disabled="!openhouse.editOpenHouseListItem">
                 </td>
                 <td>
                     <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem">
+                </td>
+                <td>
+                    <select class="form-control input-sm" ng-model="openhouse.ListingId" ng-disabled="!openhouse.editOpenHouseListItem">
+                        <option value=""></option>
+                        <option value="1">Rogger Building</option>
+                    </select>
                 </td>
                 <td>
                     <div class="btn-group">
@@ -32,14 +43,22 @@
 
             </tr>
             <tr>
+                <td>{{openHouseList.length +1}}</td>
                 <td>
-                    <input type="datetime-local" class="form-control input-sm" ng-model="addOpenHouseBeginDate">
+                    <input type="datetime-local" class="form-control input-sm" ng-model="OpenHouseBeginDate">
                 </td>
                 <td>
-                    <input type="datetime-local" class="form-control input-sm" ng-model="addOpenHouseEndDate">
+                    <input type="datetime-local" class="form-control input-sm" ng-model="OpenHouseEndDate">
+                </td>
+                <td>
+                    <select class="form-control input-sm" ng-model="ListingId">
+                        <option value=""></option>
+                        <option value="1">Rogger Building</option>
+                    </select>
+                </td>
                 <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm" ng-click="addOpenHouseListItem()" ng-disabled="addOpenHouseBeginDate==null || addOpenHouseEndDate==null"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="addOpenHouseListItem()" ng-disabled="OpenHouseBeginDate==null || OpenHouseEndDate==null || ListingId.length==0"><span class="glyphicon glyphicon-plus"></span></button>
                     </div>
                 </td>
             </tr>

@@ -1,15 +1,12 @@
 ﻿app.controller("agentCtrl", ["$scope", "commonservice", function ($scope, commonservice) {
-
-    
-    $scope.addAgentName = "";
     $scope.agentList = [];
 
     $scope.addAgentItem = function () {
-        var scope = this;
-        var addItem = { AgentName: scope.addAgentName };
-        if (!commonservice.checkitems($scope.agentList, addItem)) {
+        //var scope = this;
+        var addItem = { AgentName: $scope.AgentName };
+        if (!commonservice.checkForDuplicateItems($scope.agentList, addItem)) {
             $scope.agentList.push(addItem);
-            scope.addAgentName = "";
+            $scope.clear();
         }
         else
             alert("The item is already in Agent Item[s]");
@@ -19,9 +16,12 @@
         $scope.agentList.splice(idx, 1);
     };
 
-    //$scope.OnAgentInit = function () {
-    //    $scope.addAgentName = "";
-    //    $scope.AgentList = [];
-    //};
+    $scope.clear = function () {
+        $scope.AgentName = "";
+    };
+
+    $scope.onAgentInIt = function () {
+        $scope.clear();
+    };
 
 }]);

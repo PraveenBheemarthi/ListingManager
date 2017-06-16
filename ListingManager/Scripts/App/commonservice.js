@@ -1,5 +1,5 @@
 ﻿app.service('commonservice', function () {
-    this.checkitems = function contains(list, obj) {
+    this.checkForDuplicateItems = function contains(list, obj) {
         for (var i = 0; i < list.length; i++) {
             if (list[i].$$hashKey)
                 delete list[i].$$hashKey

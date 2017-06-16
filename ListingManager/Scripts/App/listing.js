@@ -1,14 +1,12 @@
 ﻿app.controller("listingCtrl", ["$scope", "commonservice", function ($scope, commonservice) {
-
-    $scope.addListingName = ""; $scope.addListingAddress = "";
     $scope.listingList = [];
 
     $scope.addListingItem = function () {
-        var scope = this;
-        var addItem = { ListingName: scope.addListingName, ListingAddress: scope.addListingAddress };
-        if (!commonservice.checkitems($scope.listingList, addItem)) {
+        //var scope = this;
+        var addItem = { ListingName: $scope.ListingName, ListingAddress: $scope.ListingAddress, AgentId : $scope.AgentId };
+        if (!commonservice.checkForDuplicateItems($scope.listingList, addItem)) {
             $scope.listingList.push(addItem);
-            scope.addListingName = ""; scope.addListingAddress = "";
+            $scope.clear();
         }
         else
             alert("The item is already in Listing Item[s]");
@@ -19,10 +17,12 @@
         $scope.listingList.splice(idx, 1);
     };
 
-
-    //$scope.OnMainInIt = function () {
-    //    $scope.addListingName = $scope.addListingAddress = "";
-    //    $scope.Listing = [];
-    //};
+    $scope.clear = function () {
+        $scope.ListingName = ""; $scope.ListingAddress = ""; $scope.AgentId = "";
+    };
+    
+    $scope.onListingInIt = function () {
+        $scope.clear();
+    };
    
 }]);
