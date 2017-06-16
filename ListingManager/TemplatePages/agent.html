@@ -1,45 +1,46 @@
 ﻿<h1>Agent</h1>
+<div ng-controller="agentCtrl">
+    <table class="table table-bordered table-hover">
+        <!--ng-init="OnAgentInit()"-->
+        <thead></thead>
+        <tbody>
+            <tr>
+                <th>
+                    Agent Name
+                </th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="agent in agentList">
+                <td>
+                    <input type="text" class="form-control input-sm" ng-model="agent.AgentName" ng-disabled="!agent.editAgentItem">
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm" ng-if="!agent.editAgentItem" ng-click="agent.editAgentItem = !agent.editAgentItem"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" ng-click="updateListingItem($index)">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" ng-click="agent.editAgentItem = !agent.editAgentItem">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="deleteAgentItem($index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </div>
+                </td>
 
-<table class="table table-bordered table-hover">
-    <!--ng-init="OnAgentInit()"-->
-    <thead></thead>
-    <tbody>
-        <tr>
-            <th>
-                Agent Name
-            </th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="agent in agentList">
-            <td>
-                <input type="text" class="form-control input-sm" ng-model="agent.AgentName" ng-disabled="!agent.editAgentItem">
-            </td>
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm" ng-if="!agent.editAgentItem" ng-click="agent.editAgentItem = !agent.editAgentItem"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" ng-click="updateListingItem($index)">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" ng-click="agent.editAgentItem = !agent.editAgentItem">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm" ng-click="deleteAgentItem($index)">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                </div>
-            </td>
-
-        </tr>
-        <tr>
-            <td>
+            </tr>
+            <tr>
+                <td>
                     <input type="text" class="form-control input-sm" ng-model="addAgentName">
-            </td>
-            <td>
-                <button type="button" class="btn btn-default btn-sm" ng-click="addAgentItem()" ng-disabled="addAgentName.length==0">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="addAgentItem()" ng-disabled="addAgentName.length==0">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
+</div>

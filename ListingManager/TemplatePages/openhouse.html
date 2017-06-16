@@ -1,47 +1,49 @@
 ﻿<h1>Open House</h1>
+<div ng-controller="openhouseCtrl">
 
-<table class="table table-bordered table-hover">
-    <!--ng-init="OnOpenHouseInIt()"-->
-    <thead></thead>
-    <tbody>
-        <tr>
-            <th>
-                Begin Date
-            </th>
-            <th>
-                End Date
-            </th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="openhouse in openHouseList">
-            <td>
-                <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem">
-            </td>
-            <td>
-                <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem">
-            </td>
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm" ng-if="!openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="updateListingItem($index)"><span class="glyphicon glyphicon-ok"></span></button>
-                    <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem"><span class="glyphicon glyphicon-remove"></span></button>
-                    <button type="button" class="btn btn-default btn-sm" ng-click="deleteOpenHouseListItem($index)"><span class="glyphicon glyphicon-trash"></span></button>
-                </div>
-            </td>
+    <table class="table table-bordered table-hover">
+        <!--ng-init="OnOpenHouseInIt()"-->
+        <thead></thead>
+        <tbody>
+            <tr>
+                <th>
+                    Begin Date
+                </th>
+                <th>
+                    End Date
+                </th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="openhouse in openHouseList">
+                <td>
+                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem">
+                </td>
+                <td>
+                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem">
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm" ng-if="!openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="updateListingItem($index)"><span class="glyphicon glyphicon-ok"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="deleteOpenHouseListItem($index)"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                </td>
 
-        </tr>
-        <tr>
-            <td>
+            </tr>
+            <tr>
+                <td>
                     <input type="datetime-local" class="form-control input-sm" ng-model="addOpenHouseBeginDate">
-            </td>
-            <td>
+                </td>
+                <td>
                     <input type="datetime-local" class="form-control input-sm" ng-model="addOpenHouseEndDate">
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm" ng-click="addOpenHouseListItem()" ng-disabled="addOpenHouseBeginDate==null || addOpenHouseEndDate==null"><span class="glyphicon glyphicon-plus"></span></button>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="addOpenHouseListItem()" ng-disabled="addOpenHouseBeginDate==null || addOpenHouseEndDate==null"><span class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
+</div>

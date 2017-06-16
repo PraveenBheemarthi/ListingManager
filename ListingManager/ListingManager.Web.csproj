@@ -65,7 +65,12 @@
     <Content Include="index.html" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\App\agent.js" />
     <Content Include="Scripts\App\app.js" />
+    <Content Include="Scripts\App\commonservice.js" />
+    <Content Include="Scripts\App\listing.js" />
+    <Content Include="Scripts\App\main.js" />
+    <Content Include="Scripts\App\openhouse.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">
@@ -103,7 +108,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="TemplatePages\agent.html" />
-    <Content Include="TemplatePages\main.html" />
+    <Content Include="TemplatePages\listing.html" />
     <Content Include="TemplatePages\openhouse.html" />
     <Content Include="Web.config" />
   </ItemGroup>
