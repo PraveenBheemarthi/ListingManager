@@ -65,12 +65,12 @@
     <Content Include="index.html" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\App\agent.js" />
+    <Content Include="Scripts\App\controllers\agent.js" />
     <Content Include="Scripts\App\app.js" />
-    <Content Include="Scripts\App\commonservice.js" />
-    <Content Include="Scripts\App\listing.js" />
-    <Content Include="Scripts\App\main.js" />
-    <Content Include="Scripts\App\openhouse.js" />
+    <Content Include="Scripts\App\services\common.js" />
+    <Content Include="Scripts\App\controllers\listing.js" />
+    <Content Include="Scripts\App\controllers\main.js" />
+    <Content Include="Scripts\App\controllers\openhouse.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">
@@ -107,13 +107,17 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="TemplatePages\agent.html" />
-    <Content Include="TemplatePages\listing.html" />
-    <Content Include="TemplatePages\openhouse.html" />
+    <Content Include="Views\templates\agent.tpl.html" />
+    <Content Include="Views\templates\listing.tpl.html" />
+    <Content Include="Views\templates\openhouse.tpl.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\App\configurattion\" />
+    <Folder Include="Scripts\App\filters\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

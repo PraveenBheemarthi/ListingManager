@@ -2,19 +2,19 @@
 app.config(function ($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl: "templatepages/agent.html",
+        templateUrl: "Views/templates/agent.tpl.html",
         controller: "agentCtrl"
     })
     .when("/listing", {
-        templateUrl: "templatepages/listing.html",
+        templateUrl: "Views/templates/listing.tpl.html",
         controller: "listingCtrl"
     })
     .when("/openhouse", {
-        templateUrl: "templatepages/openhouse.html",
+        templateUrl: "Views/templates/openhouse.tpl.html",
         controller: "openhouseCtrl"
     })
     .otherwise({
-        templateUrl: "templatepages/agent.html",
+        templateUrl: "Views/templates/agent.tpl.html",
         controller: "agentCtrl"
     });
 });
