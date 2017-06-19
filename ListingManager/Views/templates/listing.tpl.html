@@ -29,25 +29,28 @@
                     <!--<select class="form-control input-sm" ng-disabled="!list.editListingItem">
                         <option ng-value="list.AgentId" ng-model="list.AgentId" >{{list.AgentName}}</option>
                     </select>-->
-                    <!--<select class="form-control input-sm" ng-model="list.AgentId" ng-options="y.AgentName for (x, y) in agentList" ng-disabled="!list.editListingItem"></select>-->
-                    <!--{{list}}
-                    {{agt}}-->
-                    <select class="form-control input-sm" ng-if="!list.editListingItem" ng-model="list" ng-select ng-options="obj.AgentName for obj in agentList track by obj.AgentId" ng-disabled="!list.editListingItem"></select>
+                    <!--<select class="form-control input-sm" ng-model="list.AgentId" ng-options="y.AgentName for (x, y) in agentList" ng-disabled="!list.editListingItem"></select>--><!--color.name for color in color    ng-disabled="!list.editListingItem"-->
+                    <!--{{list}}-->
+                    <select class="form-control input-sm" ng-model="list" ng-if="!list.editListingItem" ng-options="agt.AgentName for agt in agentList track by agt.AgentId" ng-disabled="!list.editListingItem"></select>
+                    <!--{{agentEditSelect}}-->
+                    <!--<select class="form-control input-sm"  ng-model="agentEditSelect" ng-if="list.editListingItem"  ng-options="agentEditItem as agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-disabled="!list.editListingItem"></select>-->
+                    <select class="form-control input-sm"  ng-model="agentEditSelect" ng-if="list.editListingItem"  ng-options="agentEditItem as agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-change="updateEditSelectedItem(agentEditSelect)" ng-disabled="!list.editListingItem"></select>
 
-                    <select class="form-control input-sm"  ng-if="list.editListingItem" ng-model="item" ng-options="item as item.AgentName for item in agentList track by item.AgentId" ng-disabled="!list.editListingItem"></select>
+                    <!--{{agentEditSelect}}-->
                 </td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" ng-if="!list.editListingItem" ng-click="list.editListingItem = !list.editListingItem">
+                    <!--{{listingList[$index]}}-->
+                    <button type="button" class="btn btn-default btn-sm" ng-if="!list.editListingItem" ng-click="list.editListingItem = !list.editListingItem; editItemClick($index);" ><!--ng-disabled="singleEdit"-->
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button type="button" class="btn btn-default btn-sm" ng-if="list.editListingItem" ng-click="updateListingItem($index)">
+                    <button type="button" class="btn btn-default btn-sm" ng-if="list.editListingItem" confirmed-click="updateListingItem($index)" ng-confirm-click="Would you like to Update?">
                         <span class="glyphicon glyphicon-ok"></span>
                     </button>
                     <button type="button" class="btn btn-default btn-sm" ng-if="list.editListingItem" ng-click="list.editListingItem = !list.editListingItem">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
 
-                    <button type="button" class="btn btn-default btn-sm" ng-click="deleteListingItem($index)">
+                    <button type="button" class="btn btn-default btn-sm" confirmed-click="deleteListingItem($index)" ng-confirm-click="Would you like to Delete?"><!--ng-disabled="singleEdit"-->
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
 
@@ -67,10 +70,10 @@
                     <!--<select class="form-control input-sm" ng-model="AgentId">
                         <option ng-repeat="agent in agentList" ng-value="list.AgentId">{{agent.AgentName}}</option>
                     </select>-->
-                    <select class="form-control input-sm" ng-model="AgentId" ng-options="y.AgentName for (x, y) in agentList"></select>
+                    <select class="form-control input-sm" ng-model="Agent" ng-options="y.AgentName for (x, y) in agentList"></select>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" ng-click="addListingItem()" ng-disabled="ListingName.length==0 || ListingAddress.length==0 || AgentId.length==0">
+                    <button type="button" class="btn btn-default btn-sm" confirmed-click="addListingItem()" ng-confirm-click="Would you like to Insert?" ng-disabled="ListingName.length==0 || ListingAddress.length==0 || Agent==null">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </td>
