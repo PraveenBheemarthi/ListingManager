@@ -9,14 +9,19 @@
     * Controller of the Listing Manager
     */
 
-    app.controller("agentCtrl", ["$scope", "commonData", function ($scope, commonData) {
+    app.controller("agentCtrl", ["$scope", "commonData", "agentService", function ($scope, commonData, agentService) {
         $scope.agentList = [];
 
         $scope.addAgentItem = function () {
             //var scope = this;
             var addItem = { AgentName: $scope.AgentName };
             if (!commonData.checkForDuplicateItems($scope.agentList, addItem)) {
-                $scope.agentList.push(addItem);
+                agentService.postAgent(addItem).then(function (response) {
+                    debugger
+                    $scope.agentList.push(addItem);
+                }, function (error) {
+                    debugger
+                });
                 $scope.clear();
             }
             else
@@ -33,6 +38,11 @@
 
         $scope.onAgentInIt = function () {
             $scope.clear();
+            agentService.getAgents().then(function (response) {
+                $scope.agentList = response;
+            }, function (error) {
+                console.log("getAgents:" + error);
+            });
         };
 
     }]);
