@@ -18,7 +18,6 @@
     //        self.error(errorThrown);
     //    });
     //}
-
     function getAgents() {
         var request = $http({
             method: "get",
