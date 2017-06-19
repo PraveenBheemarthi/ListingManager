@@ -1,6 +1,4 @@
 ﻿app.factory("agentService", ["$http", "$q", "appConfig", function ($http, $q, appConfig) {
-
-
     return {
         getAgents: getAgents,
         getAgent: getAgent,
