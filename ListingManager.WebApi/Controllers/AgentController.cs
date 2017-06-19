@@ -64,6 +64,10 @@ namespace ListingManager.WebApi.Controllers
                 return BadRequest();
             }
 
+            Agent agentDb = await db.Agents.FindAsync(id);
+            agent.AgentCreatedDateTime = agentDb.AgentCreatedDateTime;
+
+
             agent.AgentLastUpdatedDateTime = DateTime.Now;
             db.Entry(agent).State = EntityState.Modified;
 
@@ -98,7 +102,17 @@ namespace ListingManager.WebApi.Controllers
             db.Agents.Add(agent);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = agent.AgentId }, agent);
+            //load agent name
+
+            //db.Entry(agent).Reference(x => x.Agent).Load();
+
+            var agentDTO = new AgentDTO()
+            {
+                AgentId = agent.AgentId,
+                AgentName = agent.AgentName
+            };
+
+            return CreatedAtRoute("DefaultApi", new { id = agent.AgentId }, agentDTO);
         }
 
         // DELETE: api/Agent/5

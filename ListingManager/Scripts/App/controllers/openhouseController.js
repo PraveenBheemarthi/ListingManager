@@ -14,12 +14,12 @@
 
         $scope.addOpenHouseListItem = function () {
             var addItem = { OpenHouseBeginDate: $scope.OpenHouseBeginDate, OpenHouseEndDate: $scope.OpenHouseEndDate, ListingId: $scope.ListingId };
-            if (!commonData.checkForDuplicateItems($scope.openHouseList, addItem)) {
+            //if (!commonData.checkForDuplicateItems($scope.openHouseList, addItem)) {
                 $scope.openHouseList.push(addItem);
                 $scope.clear();
-            }
-            else
-                alert("The item is already in Open House Item[s]");
+            //}
+            //else
+            //    alert("The item is already in Open House Item[s]");
         };
 
         $scope.clear = function () {

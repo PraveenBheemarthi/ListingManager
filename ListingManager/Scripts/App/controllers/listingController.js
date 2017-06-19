@@ -15,12 +15,12 @@
         $scope.addListingItem = function () {
             //var scope = this;
             var addItem = { ListingName: $scope.ListingName, ListingAddress: $scope.ListingAddress, AgentId: $scope.AgentId };
-            if (!commonData.checkForDuplicateItems($scope.listingList, addItem)) {
+           // if (!commonData.checkForDuplicateItems($scope.listingList, addItem)) {
                 $scope.listingList.push(addItem);
                 $scope.clear();
-            }
-            else
-                alert("The item is already in Listing Item[s]");
+            //}
+            //else
+            //    alert("The item is already in Listing Item[s]");
         };
 
 

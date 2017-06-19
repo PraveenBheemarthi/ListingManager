@@ -5,7 +5,8 @@
         getAgents: getAgents,
         getAgent: getAgent,
         postAgent: postAgent,
-        putAgent: putAgent
+        putAgent: putAgent,
+        deleteAgent: deleteAgent
     }
 
     //function ajaxHelper(uri, method, data) {
@@ -53,7 +54,7 @@
     }
 
     function putAgent(agentId, agentData) {
-        console.log(agentId, agentData);
+        //console.log(agentId, agentData);
         var request = $http({
             method: "put",
             url: appConfig().api_url + "/Agent/" + agentId,

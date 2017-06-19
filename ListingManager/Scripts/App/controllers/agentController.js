@@ -14,25 +14,45 @@
 
         $scope.addAgentItem = function () {
             //var scope = this;
-            var addItem = { AgentName: $scope.AgentName };
-            if (!commonData.checkForDuplicateItems($scope.agentList, addItem)) {
+            var addItem = { AgentId: $scope.AgentId, AgentName: $scope.AgentName };
+           // if (!commonData.checkForDuplicateItems($scope.agentList, addItem)) {
                 agentService.postAgent(addItem).then(function (response) {
-                    debugger
+                    addItem.AgentId = response.AgentId;
+                    addItem.AgentName = response.AgentName;
                     $scope.agentList.push(addItem);
                 }, function (error) {
-                    debugger
+                    console.log("postAgent Error:" + error);
                 });
                 $scope.clear();
-            }
-            else
-                alert("The item is already in Agent Item[s]");
+            //}
+            //else
+            //    alert("The item is already in Agent Item[s]");
         };
 
-        $scope.deleteAgentItem = function (idx) {
-            $scope.agentList.splice(idx, 1);
+        $scope.updateListingItem = function (index) {debugger
+            var updateItem = $scope.agentList[index];
+            agentService.putAgent(updateItem.AgentId, updateItem).then(function (response) {
+                if (response == "")
+                    updateItem.editAgentItem = !updateItem.editAgentItem;
+                else
+                    console.log("putAgent Success:" + response);
+            }, function (error) {
+                console.log("putAgent Error:" + error);
+            });
+
+        };
+
+        $scope.deleteAgentItem = function (index) {
+            var deleteItem = $scope.agentList[index];
+            agentService.deleteAgent(deleteItem.AgentId).then(function (response) {
+                $scope.agentList.splice(index, 1);
+            }, function (error) {
+                console.log("deleteAgents Error:" + error);
+            });
         };
 
         $scope.clear = function () {
+            $scope.AgentId = 0;
             $scope.AgentName = "";
         };
 
