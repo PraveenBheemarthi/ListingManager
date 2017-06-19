@@ -30,15 +30,15 @@
                     <!--<select class="form-control input-sm" ng-model="openhouse.ListingId" ng-disabled="!openhouse.editOpenHouseListItem">
                         <option value="1">Pride and Prejudice</option>
                     </select>-->
-                    <select class="form-control input-sm" ng-if="!openhouse.editOpenHouseListItem" ng-model="openhouse" ng-select ng-options="obj.ListingName for obj in listingList track by obj.ListingId" ng-disabled="!list.editListingItem"></select>
-
+                    <select class="form-control input-sm" ng-model="openhouse" ng-if="!openhouse.editOpenHouseListItem" ng-options="lst.ListingName for lst in listingList track by lst.ListingId" ng-disabled="!openhouse.editOpenHouseListItem"></select>
+                    <select class="form-control input-sm" ng-model="listingEditSelect" ng-if="openhouse.editOpenHouseListItem" ng-options="listingEditItem as listingEditItem.ListingName for listingEditItem in listingList track by listingEditItem.ListingId" ng-change="updateEditSelectedItem(listingEditSelect)" ng-disabled="!openhouse.editOpenHouseListItem"></select>
                 </td>
                 <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm" ng-if="!openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="updateOpenHouseItem($index)"><span class="glyphicon glyphicon-ok"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-if="!openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem; editItemClick($index);"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" confirmed-click="updateOpenHouseItem($index)" ng-confirm-click="Would you like to Update?"><span class="glyphicon glyphicon-ok"></span></button>
                         <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem"><span class="glyphicon glyphicon-remove"></span></button>
-                        <button type="button" class="btn btn-default btn-sm" ng-click="deleteOpenHouseListItem($index)"><span class="glyphicon glyphicon-trash"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" confirmed-click="deleteOpenHouseListItem($index)" ng-confirm-click="Would you like to Delete?"><span class="glyphicon glyphicon-trash"></span></button>
                     </div>
                 </td>
 
@@ -56,16 +56,16 @@
                         <option value=""></option>
                         <option value="1">Rogger Building</option>
                     </select>-->
-                    <select class="form-control input-sm" ng-model="ListingId" ng-options="y.ListingName for (x, y) in listingList"></select>
+                    <select class="form-control input-sm" ng-model="Listing" ng-options="y.ListingName for (x, y) in listingList"></select>
+                    <select class="form-control input-sm" ng-model="Agent" ng-options="y.AgentName for (x, y) in agentList"></select>
 
                 </td>
                 <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm" ng-click="addOpenHouseListItem()" ng-disabled="OpenHouseBeginDate==null || OpenHouseEndDate==null || ListingId.length==0"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" confirmed-click="addOpenHouseListItem()" ng-confirm-click="Would you like to Insert?" ng-disabled="OpenHouseBeginDate==null || OpenHouseEndDate==null || Listing==null"><span class="glyphicon glyphicon-plus"></span></button>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-
 </div>
