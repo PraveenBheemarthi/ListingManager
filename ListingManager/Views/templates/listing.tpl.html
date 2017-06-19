@@ -18,7 +18,7 @@
                 <th></th>
             </tr>
             <tr ng-repeat="list in listingList">
-                <td>{{$index+1}}</td>
+                <td>{{$index+1}} <input type="hidden" ng-model="list.ListingId" /> </td>
                 <td>
                     <input type="text" class="form-control input-sm" ng-model="list.ListingName" ng-disabled="!list.editListingItem">
                 </td>
@@ -26,10 +26,15 @@
                     <input type="text" class="form-control input-sm" ng-model="list.ListingAddress" ng-disabled="!list.editListingItem">
                 </td>
                 <td>
-                    <select class="form-control input-sm" ng-model="list.AgentId" ng-disabled="!list.editListingItem">
-                        <option value=""></option>
-                        <option value="1">John</option>
-                    </select>
+                    <!--<select class="form-control input-sm" ng-disabled="!list.editListingItem">
+                        <option ng-value="list.AgentId" ng-model="list.AgentId" >{{list.AgentName}}</option>
+                    </select>-->
+                    <!--<select class="form-control input-sm" ng-model="list.AgentId" ng-options="y.AgentName for (x, y) in agentList" ng-disabled="!list.editListingItem"></select>-->
+                    <!--{{list}}
+                    {{agt}}-->
+                    <select class="form-control input-sm" ng-if="!list.editListingItem" ng-model="list" ng-select ng-options="obj.AgentName for obj in agentList track by obj.AgentId" ng-disabled="!list.editListingItem"></select>
+
+                    <select class="form-control input-sm"  ng-if="list.editListingItem" ng-model="item" ng-options="item as item.AgentName for item in agentList track by item.AgentId" ng-disabled="!list.editListingItem"></select>
                 </td>
                 <td>
                     <button type="button" class="btn btn-default btn-sm" ng-if="!list.editListingItem" ng-click="list.editListingItem = !list.editListingItem">
@@ -59,10 +64,10 @@
                     <input type="text" class="form-control input-sm" ng-model="ListingAddress">
                 </td>
                 <td>
-                    <select class="form-control input-sm" ng-model="AgentId">
-                        <option value=""></option>
-                        <option value="1">John</option>
-                    </select>
+                    <!--<select class="form-control input-sm" ng-model="AgentId">
+                        <option ng-repeat="agent in agentList" ng-value="list.AgentId">{{agent.AgentName}}</option>
+                    </select>-->
+                    <select class="form-control input-sm" ng-model="AgentId" ng-options="y.AgentName for (x, y) in agentList"></select>
                 </td>
                 <td>
                     <button type="button" class="btn btn-default btn-sm" ng-click="addListingItem()" ng-disabled="ListingName.length==0 || ListingAddress.length==0 || AgentId.length==0">

@@ -64,10 +64,9 @@ namespace ListingManager.WebApi.Controllers
                 return BadRequest();
             }
 
-            Agent agentDb = await db.Agents.FindAsync(id);
-            agent.AgentCreatedDateTime = agentDb.AgentCreatedDateTime;
+            //db.context.Set<TEntity>().Attach(entity); //attach
 
-
+            //agent.AgentCreatedDateTime = DateTime.Now;
             agent.AgentLastUpdatedDateTime = DateTime.Now;
             db.Entry(agent).State = EntityState.Modified;
 
@@ -144,5 +143,10 @@ namespace ListingManager.WebApi.Controllers
         {
             return db.Agents.Count(e => e.AgentId == id) > 0;
         }
+
+        //private DateTime? AgentCreatedDateTime(int id)
+        //{
+        //    return db.Agents.Find(id).AgentCreatedDateTime ;
+        //}
     }
 }

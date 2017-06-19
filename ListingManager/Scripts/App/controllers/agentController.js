@@ -29,7 +29,7 @@
             //    alert("The item is already in Agent Item[s]");
         };
 
-        $scope.updateListingItem = function (index) {debugger
+        $scope.updateAgentItem = function (index) {
             var updateItem = $scope.agentList[index];
             agentService.putAgent(updateItem.AgentId, updateItem).then(function (response) {
                 if (response == "")
@@ -47,7 +47,7 @@
             agentService.deleteAgent(deleteItem.AgentId).then(function (response) {
                 $scope.agentList.splice(index, 1);
             }, function (error) {
-                console.log("deleteAgents Error:" + error);
+                console.log("deleteAgent Error:" + error);
             });
         };
 

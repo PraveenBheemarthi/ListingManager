@@ -73,6 +73,8 @@
     <Content Include="Scripts\App\controllers\listingController.js" />
     <Content Include="Scripts\App\controllers\mainController.js" />
     <Content Include="Scripts\App\controllers\openhouseController.js" />
+    <Content Include="Scripts\App\services\listingService.js" />
+    <Content Include="Scripts\App\services\openhouseService.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">

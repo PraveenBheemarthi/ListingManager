@@ -11,9 +11,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using ListingManager.WebApi.Models;
 using ListingManager.Domain.Entities.DataTransferObjects;
+using System.Web.Http.Cors;
 
 namespace ListingManager.WebApi.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class OpenHouseController : ApiController
     {
         private ListingManagerWebApiContext db;
@@ -75,6 +77,7 @@ namespace ListingManager.WebApi.Controllers
                 return BadRequest();
             }
 
+            //openHouse.OpenHouseCreatedDateTime = DateTime.Now;
             openHouse.OpenHouseLastUpdatedDateTime = DateTime.Now;
             db.Entry(openHouse).State = EntityState.Modified;
 
