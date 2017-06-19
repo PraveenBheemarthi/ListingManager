@@ -19,10 +19,10 @@
                 <td>
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-sm" ng-if="!agent.editAgentItem" ng-click="agent.editAgentItem = !agent.editAgentItem"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" confirmed-click="updateAgentItem($index)" ng-confirm-click="Would you like to Update?">
+                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" ng-click="updateAgentItem($index)">
                             <span class="glyphicon glyphicon-ok"></span>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" confirmed-click="agent.editAgentItem = !agent.editAgentItem" ng-confirm-click="Would you like to Delete?">
+                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" ng-click="agent.editAgentItem = !agent.editAgentItem">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                         <button type="button" class="btn btn-default btn-sm" ng-click="deleteAgentItem($index)">
@@ -37,7 +37,7 @@
                     <input type="text" class="form-control input-sm" ng-model="AgentName">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" confirmed-click="addAgentItem()" ng-confirm-click="Would you like to Insert?" ng-disabled="AgentName.length==0">
+                    <button type="button" class="btn btn-default btn-sm" ng-click="addAgentItem()" ng-disabled="AgentName.length==0">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </td>

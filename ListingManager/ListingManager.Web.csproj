@@ -68,7 +68,6 @@
     <Content Include="Scripts\App\configurattion\appConfig.js" />
     <Content Include="Scripts\App\controllers\agentController.js" />
     <Content Include="Scripts\App\app.js" />
-    <Content Include="Scripts\App\directives\appDirective.js" />
     <Content Include="Scripts\App\services\agentService.js" />
     <Content Include="Scripts\App\services\commonService.js" />
     <Content Include="Scripts\App\controllers\listingController.js" />
