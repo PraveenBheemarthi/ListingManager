@@ -14,7 +14,7 @@
             <tr ng-repeat="agent in agentList">
                 <td>{{$index+1}} <input type="hidden" ng-model="agent.AgentId" /> </td>
                 <td>
-                    <input type="text" class="form-control input-sm" ng-model="agent.AgentName" ng-disabled="!agent.editAgentItem">
+                    <input type="text" class="form-control input-sm" ng-model="agent.AgentName" ng-disabled="!agent.editAgentItem" ng-focus="agent.AgentNameOldValue = agent.AgentName">
                 </td>
                 <td>
                     <div class="btn-group">
@@ -22,10 +22,10 @@
                         <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" confirmed-click="updateAgentItem($index)" ng-confirm-click="Would you like to Update?">
                             <span class="glyphicon glyphicon-ok"></span>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" confirmed-click="agent.editAgentItem = !agent.editAgentItem" ng-confirm-click="Would you like to Delete?">
+                        <button type="button" class="btn btn-default btn-sm" ng-if="agent.editAgentItem" ng-click="agent.editAgentItem = !agent.editAgentItem; agent.AgentName = agent.AgentNameOldValue;">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm" ng-click="deleteAgentItem($index)">
+                        <button type="button" class="btn btn-default btn-sm" confirmed-click="deleteAgentItem($index)" ng-confirm-click="Would you like to Delete?">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </div>

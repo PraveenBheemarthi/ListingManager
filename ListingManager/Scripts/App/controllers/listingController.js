@@ -35,8 +35,8 @@
 
         $scope.updateListingItem = function (index) {
             var updateItem = $scope.listingList[index];
-            updateItem.AgentId = $scope.agentEditSelect.AgentId;
-            updateItem.AgentName = $scope.agentEditSelect.AgentName;
+            updateItem.AgentId = $scope.listingList[index].agentEditSelect.AgentId;
+            updateItem.AgentName = $scope.listingList[index].agentEditSelect.AgentName;
             listingService.putListing(updateItem.ListingId, updateItem).then(function (response) {
                 if (response == "")
                     updateItem.editListingItem = !updateItem.editListingItem;
@@ -61,13 +61,13 @@
         };
 
         $scope.editItemClick = function (index) {
-            $scope.agentEditSelect = $scope.listingList[index];
+            $scope.listingList[index].agentEditSelect = { AgentId: $scope.listingList[index].AgentId, AgentName: $scope.listingList[index].AgentName };
             // $scope.singleEdit = !$scope.singleEdit;
         };
 
-        $scope.updateEditSelectedItem = function (agentEditSelect) {
-            $scope.agentEditSelect.AgentId = agentEditSelect.AgentId;
-            $scope.agentEditSelect.AgentName = agentEditSelect.AgentName;
+        $scope.updateEditSelectedItem = function (agentEditSelect,index) {
+            //$scope.listingList[index].agentEditSelect.AgentId = agentEditSelect.AgentId;
+           // $scope.listingList[index].agentEditSelect.AgentName = agentEditSelect.AgentName;
         };
         $scope.onListingInIt = function () {
             $scope.clear();

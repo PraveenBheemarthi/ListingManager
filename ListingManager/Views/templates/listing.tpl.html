@@ -20,10 +20,10 @@
             <tr ng-repeat="list in listingList">
                 <td>{{$index+1}} <input type="hidden" ng-model="list.ListingId" /> </td>
                 <td>
-                    <input type="text" class="form-control input-sm" ng-model="list.ListingName" ng-disabled="!list.editListingItem">
+                    <input type="text" class="form-control input-sm" ng-model="list.ListingName" ng-disabled="!list.editListingItem" ng-focus="list.ListingNameOldValue = list.ListingName">
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" ng-model="list.ListingAddress" ng-disabled="!list.editListingItem">
+                    <input type="text" class="form-control input-sm" ng-model="list.ListingAddress" ng-disabled="!list.editListingItem" ng-focus="list.ListingAddressOldValue = list.ListingAddress">
                 </td>
                 <td>
                     <!--<select class="form-control input-sm" ng-disabled="!list.editListingItem">
@@ -34,9 +34,8 @@
                     <select class="form-control input-sm" ng-model="list" ng-if="!list.editListingItem" ng-options="agt.AgentName for agt in agentList track by agt.AgentId" ng-disabled="!list.editListingItem"></select>
                     <!--{{agentEditSelect}}-->
                     <!--<select class="form-control input-sm"  ng-model="agentEditSelect" ng-if="list.editListingItem"  ng-options="agentEditItem as agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-disabled="!list.editListingItem"></select>-->
-                    <select class="form-control input-sm" ng-model="agentEditSelect" ng-if="list.editListingItem" ng-options="agentEditItem as agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-change="updateEditSelectedItem(agentEditSelect)" ng-disabled="!list.editListingItem"></select>
-
-                    <!--{{agentEditSelect}}-->
+                    <select class="form-control input-sm" ng-model="list.agentEditSelect" ng-if="list.editListingItem" ng-options="agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-change="updateEditSelectedItem(list.agentEditSelect,$index)" ng-disabled="!list.editListingItem"></select>
+                    <!--{{list.agentEditSelect}}-->                                                            <!--agentEditItem as--> 
                 </td>
                 <td>
                     <!--{{listingList[$index]}}-->
@@ -47,7 +46,7 @@
                     <button type="button" class="btn btn-default btn-sm" ng-if="list.editListingItem" confirmed-click="updateListingItem($index)" ng-confirm-click="Would you like to Update?">
                         <span class="glyphicon glyphicon-ok"></span>
                     </button>
-                    <button type="button" class="btn btn-default btn-sm" ng-if="list.editListingItem" ng-click="list.editListingItem = !list.editListingItem">
+                    <button type="button" class="btn btn-default btn-sm" ng-if="list.editListingItem" ng-click="list.editListingItem = !list.editListingItem; list.ListingName = list.ListingNameOldValue; list.ListingAddress = list.ListingAddressOldValue;">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
 
