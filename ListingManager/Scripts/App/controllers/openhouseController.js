@@ -35,11 +35,11 @@
 
         $scope.updateOpenHouseItem = function (index) {
             var updateItem = $scope.openHouseList[index];
-            updateItem.ListingId = $scope.listingEditSelect.ListingId;
-            updateItem.ListingName = $scope.listingEditSelect.ListingName;
+            updateItem.ListingId = $scope.openHouseList[index].openhouseEditSelect.ListingId;
+            updateItem.ListingName = $scope.openHouseList[index].openhouseEditSelect.ListingName;
             openhouseService.putOpenHouse(updateItem.OpenHouseId, updateItem).then(function (response) {
                 if (response == "")
-                    updateItem.editOpenHouseItem = !updateItem.editOpenHouseItem;
+                    updateItem.editOpenHouseListItem = !updateItem.editOpenHouseListItem;
                 else
                     console.log("putOpenHouseSuccess:" + response);
             }, function (error) {
@@ -50,7 +50,7 @@
         $scope.deleteOpenHouseListItem = function (index) {
             var deleteItem = $scope.openHouseList[index];
             openhouseService.deleteOpenHouse(deleteItem.OpenHouseId).then(function (response) {
-                $scope.openHouseList.splice(idx, 1);
+                $scope.openHouseList.splice(index, 1);
             }, function (error) {
                 console.log("deleteOpenHouse Error:" + error);
             });
@@ -61,15 +61,18 @@
         };
 
         $scope.editItemClick = function (index) {
-            $scope.listingEditSelect = $scope.openHouseList[index];
+            $scope.openHouseList[index].openhouseEditSelect = {
+                ListingId: $scope.openHouseList[index].ListingId, ListingName: $scope.openHouseList[index].ListingName, ListingAddress: $scope.openHouseList[index].ListingAddress,
+                AgentId: $scope.openHouseList[index].AgentId, AgentName: $scope.openHouseList[index].AgentName
+            };
             // $scope.singleEdit = !$scope.singleEdit;
         };
 
-        $scope.updateEditSelectedItem = function (listingEditSelect) {
-            $scope.listtingEditSelect.ListingId = listingEditSelect.ListingId;
-            $scope.listtingEditSelect.ListingName = listingEditSelect.ListingName;
-            $scope.listingEditSelect.ListingAddress = listingEditSelect.ListingAddress;
-        };
+        //$scope.updateEditSelectedItem = function (openhouseEditSelect) {
+        //    $scope.listtingEditSelect.ListingId = openhouseEditSelect.ListingId;
+        //    $scope.listtingEditSelect.ListingName = openhouseEditSelect.ListingName;
+        //    $scope.openhouseEditSelect.ListingAddress = openhouseEditSelect.ListingAddress;
+        //};
 
         $scope.onOpenHouseInIt = function () {
             $scope.clear();

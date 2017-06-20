@@ -21,23 +21,23 @@
                     {{$index+1}} <input type="hidden" ng-model="openhouse.OpenHouseId" />
                 </td>
                 <td>
-                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseBeginDate" ng-disabled="!openhouse.editOpenHouseListItem">
+                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseBeginDate" ng-disabled="!openhouse.editOpenHouseListItem" ng-focus="openhouse.OpenHouseBeginDateOldValue = openhouse.OpenHouseBeginDate">
                 </td>
                 <td>
-                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem">
+                    <input type="datetime-local" class="form-control input-sm" ng-model="openhouse.OpenHouseEndDate" ng-disabled="!openhouse.editOpenHouseListItem" ng-focus="openhouse.OpenHouseEndDateOldValue = openhouse.OpenHouseEndDate">
                 </td>
                 <td>
                     <!--<select class="form-control input-sm" ng-model="openhouse.ListingId" ng-disabled="!openhouse.editOpenHouseListItem">
                         <option value="1">Pride and Prejudice</option>
                     </select>-->
                     <select class="form-control input-sm" ng-model="openhouse" ng-if="!openhouse.editOpenHouseListItem" ng-options="lst.ListingName for lst in listingList track by lst.ListingId" ng-disabled="!openhouse.editOpenHouseListItem"></select>
-                    <select class="form-control input-sm" ng-model="listingEditSelect" ng-if="openhouse.editOpenHouseListItem" ng-options="listingEditItem as listingEditItem.ListingName for listingEditItem in listingList track by listingEditItem.ListingId" ng-change="updateEditSelectedItem(listingEditSelect)" ng-disabled="!openhouse.editOpenHouseListItem"></select>
-                </td>
+                    <select class="form-control input-sm" ng-model="openhouse.openhouseEditSelect" ng-if="openhouse.editOpenHouseListItem" ng-options="listingEditItem.ListingName for listingEditItem in listingList track by listingEditItem.ListingId" ng-disabled="!openhouse.editOpenHouseListItem"></select>
+                </td>                                                                                                                                   <!--listingEditItem as--> 
                 <td>
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-sm" ng-if="!openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem; editItemClick($index);"><span class="glyphicon glyphicon-pencil"></span></button>
                         <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" confirmed-click="updateOpenHouseItem($index)" ng-confirm-click="Would you like to Update?"><span class="glyphicon glyphicon-ok"></span></button>
-                        <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button type="button" class="btn btn-default btn-sm" ng-if="openhouse.editOpenHouseListItem" ng-click="openhouse.editOpenHouseListItem = !openhouse.editOpenHouseListItem; openhouse.OpenHouseBeginDate = openhouse.OpenHouseBeginDateOldValue; openhouse.OpenHouseEndDate = openhouse.OpenHouseEndDateOldValue"><span class="glyphicon glyphicon-remove"></span></button>
                         <button type="button" class="btn btn-default btn-sm" confirmed-click="deleteOpenHouseListItem($index)" ng-confirm-click="Would you like to Delete?"><span class="glyphicon glyphicon-trash"></span></button>
                     </div>
                 </td>
@@ -57,8 +57,6 @@
                         <option value="1">Rogger Building</option>
                     </select>-->
                     <select class="form-control input-sm" ng-model="Listing" ng-options="y.ListingName for (x, y) in listingList"></select>
-                    <select class="form-control input-sm" ng-model="Agent" ng-options="y.AgentName for (x, y) in agentList"></select>
-
                 </td>
                 <td>
                     <div class="btn-group">

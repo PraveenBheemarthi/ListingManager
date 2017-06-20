@@ -34,8 +34,8 @@
                     <select class="form-control input-sm" ng-model="list" ng-if="!list.editListingItem" ng-options="agt.AgentName for agt in agentList track by agt.AgentId" ng-disabled="!list.editListingItem"></select>
                     <!--{{agentEditSelect}}-->
                     <!--<select class="form-control input-sm"  ng-model="agentEditSelect" ng-if="list.editListingItem"  ng-options="agentEditItem as agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-disabled="!list.editListingItem"></select>-->
-                    <select class="form-control input-sm" ng-model="list.agentEditSelect" ng-if="list.editListingItem" ng-options="agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-change="updateEditSelectedItem(list.agentEditSelect,$index)" ng-disabled="!list.editListingItem"></select>
-                    <!--{{list.agentEditSelect}}-->                                                            <!--agentEditItem as--> 
+                    <select class="form-control input-sm" ng-model="list.agentEditSelect" ng-if="list.editListingItem" ng-options="agentEditItem.AgentName for agentEditItem in agentList track by agentEditItem.AgentId" ng-disabled="!list.editListingItem"></select>
+                    <!--{{list.agentEditSelect}}-->                                                            <!--agentEditItem as-->                                                                                   <!--ng-change="updateEditSelectedItem(list.agentEditSelect,$index)"-->
                 </td>
                 <td>
                     <!--{{listingList[$index]}}-->

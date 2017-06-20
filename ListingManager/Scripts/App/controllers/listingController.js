@@ -65,10 +65,10 @@
             // $scope.singleEdit = !$scope.singleEdit;
         };
 
-        $scope.updateEditSelectedItem = function (agentEditSelect,index) {
-            //$scope.listingList[index].agentEditSelect.AgentId = agentEditSelect.AgentId;
-           // $scope.listingList[index].agentEditSelect.AgentName = agentEditSelect.AgentName;
-        };
+        //$scope.updateEditSelectedItem = function (agentEditSelect,index) {
+        //    //$scope.listingList[index].agentEditSelect.AgentId = agentEditSelect.AgentId;
+        //   // $scope.listingList[index].agentEditSelect.AgentName = agentEditSelect.AgentName;
+        //};
         $scope.onListingInIt = function () {
             $scope.clear();
 
