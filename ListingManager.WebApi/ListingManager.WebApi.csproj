@@ -22,6 +22,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -93,6 +94,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ListingManagerWebApiContext-20170619042047.mdf" />
+    <Content Include="App_Data\ListingManagerWebApiContext-20170619042047_log.ldf">
+      <DependentUpon>ListingManagerWebApiContext-20170619042047.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
@@ -118,6 +123,10 @@
     <Compile Include="Migrations\201706182301494_Initial.Designer.cs">
       <DependentUpon>201706182301494_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807222019116_Initial1.cs" />
+    <Compile Include="Migrations\201807222019116_Initial1.Designer.cs">
+      <DependentUpon>201807222019116_Initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agent.cs" />
     <Compile Include="Models\Listing.cs" />
@@ -125,9 +134,7 @@
     <Compile Include="Models\OpenHouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ListingManager.Domain\ListingManager.Domain.csproj">
       <Project>{E152D3A7-AE7D-4928-83A9-E2ADB5E19907}</Project>
@@ -137,6 +144,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706182301494_Initial.resx">
       <DependentUpon>201706182301494_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807222019116_Initial1.resx">
+      <DependentUpon>201807222019116_Initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
